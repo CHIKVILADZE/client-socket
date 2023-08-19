@@ -1,25 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Players from './components/Players';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Game from './components/Game';
 
 function App() {
+  const [playerName, setPlayerName] = useState('');
+  const [opponentsName, setOpponentsName] = useState([]);
+  const [selectedOpponent, setSellectedOpponent] = useState('');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Players
+              playerName={playerName}
+              setPlayerName={setPlayerName}
+              opponentsName={opponentsName}
+              setOpponentsName={setOpponentsName}
+              selectedOpponent={selectedOpponent}
+              setSellectedOpponent={setSellectedOpponent}
+            />
+          }
+        />
+        <Route
+          path="/game"
+          element={
+            <Game
+              playerName={playerName}
+              selectedOpponent={selectedOpponent}
+              setSellectedOpponent={setSellectedOpponent}
+            />
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

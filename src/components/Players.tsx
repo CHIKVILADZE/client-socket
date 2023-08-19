@@ -64,22 +64,22 @@ function Players({
             onChange={handleChange}
           />
         </div>
-        <div className="flex flex-row align-center items-end mt-20  text-black">
-          <select
-            name=""
-            id=""
-            className="w-[40%] h-10 mt-10"
-            onChange={handleChangeOpponent}
-          >
-            <option value="" disabled selected>
-              Select an opponent
-            </option>
-            {opponentsName.map((opponent: any, index: number) => (
-              <option key={index} value={opponent.name}>
-                {opponent.name}
-              </option>
-            ))}
-          </select>
+        <div className="mt-10 text-black">
+          <h2 className="text-2xl font-semibold">Select an opponent:</h2>
+          <table className="w-full mt-2">
+            <thead>
+              <tr>
+                <th className="border px-4 py-2">Opponent Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              {opponentsName.map((opponent: any, index: number) => (
+                <tr key={index}>
+                  <td className="border px-4 py-2">{opponent.name}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
           <Link
             to="/game"
             className="mt-4 w-[30%] h-[60%]  ml-5 px-4 py-2 border  rounded-md bg-green-600 text-white"

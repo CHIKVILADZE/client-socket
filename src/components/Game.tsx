@@ -46,17 +46,13 @@ function Game({ opponentsName }: any) {
       return;
     }
 
-    // Use playerName to establish a socket connection
-    const gameSocket = io('http://localhost:3001/', {
+    const gameSocket = io('https://server-game.onrender.com', {
       query: {
         playerName,
       },
     });
 
-    // Set up event listeners and emit events using gameSocket
-
     return () => {
-      // Clean up event listeners and disconnect gameSocket
       gameSocket.disconnect();
     };
   }, [playerName]);
@@ -110,7 +106,7 @@ function Game({ opponentsName }: any) {
 
     resetBoard();
   };
-  console.log('OPOOO', opponentsName);
+
   const checkForWinner = () => {
     let roundWon = false;
 

@@ -29,7 +29,7 @@ function Players({
       socket.off('fetchedNames');
     };
   }, [setOpponentsName]);
-  console.log('OPOO', opponentsName);
+
   const handleSetName = () => {
     if (playerName.trim() === '' || selectedOpponent.trim() === '') {
       return;

@@ -7,7 +7,7 @@ type Scores = {
   [key: string]: number;
 };
 
-const socket = io('http://localhost:3001/');
+const socket = io('https://server-game.onrender.com');
 
 const INITIAL_GAME_STATE = ['', '', '', '', '', '', '', '', ''];
 const INITIAL_SCORES: Scores = { X: 0, O: 0 };

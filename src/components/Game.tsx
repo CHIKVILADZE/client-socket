@@ -68,7 +68,7 @@ function Game({ opponentsName }: any) {
     socket.emit('fetchNames');
     socket.on('fetchedNames', (fetchedNames) => {
       setNames(fetchedNames);
-      console.log(fetchedNames);
+      console.log('Fetched NAMEES', fetchedNames);
     });
 
     return () => {
@@ -76,7 +76,6 @@ function Game({ opponentsName }: any) {
     };
   }, []);
 
-  console.log('Nameeee', names);
   useEffect(() => {
     if (gameState === INITIAL_GAME_STATE) {
       return;
@@ -85,7 +84,6 @@ function Game({ opponentsName }: any) {
     checkForWinner();
   }, [gameState]);
 
-  console.log('Playyyerrrr', playerName);
   const resetBoard = () => setGameState(INITIAL_GAME_STATE);
   const handleWin = () => {
     const winner = currentPlayer === 'X' ? playerName : selectedOpponent;

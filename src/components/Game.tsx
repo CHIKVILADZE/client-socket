@@ -147,12 +147,9 @@ function Game({ opponentsName }: any) {
   const handleCellClick = (event: any) => {
     const cellIndex = Number(event.target.getAttribute('data-cell-index'));
 
-    // const currentValue = gameState[cellIndex];
+    const currentValue = gameState[cellIndex];
 
-    // if (currentValue) {
-    //   return;
-    // }
-    if (currentPlayer !== playerName) {
+    if (currentValue) {
       return;
     }
 
@@ -160,6 +157,7 @@ function Game({ opponentsName }: any) {
     newValues[cellIndex] = currentPlayer;
     setGameState(newValues);
 
+    socket.emit('chat', { cellIndex, value: currentPlayer });
     socket.emit('chat', { cellIndex, value: currentPlayer });
     console.log('CellIndexxx', { cellIndex, value: currentPlayer });
     console.log('newValues', newValues);

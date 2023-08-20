@@ -147,11 +147,11 @@ function Game({ opponentsName }: any) {
   const handleCellClick = (event: any) => {
     const cellIndex = Number(event.target.getAttribute('data-cell-index'));
 
-    const currentValue = gameState[cellIndex];
+    // const currentValue = gameState[cellIndex];
 
-    if (currentValue) {
-      return;
-    }
+    // if (currentValue) {
+    //   return;
+    // }
     if (currentPlayer !== playerName) {
       return;
     }

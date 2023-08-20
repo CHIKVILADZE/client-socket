@@ -81,19 +81,9 @@ function Game({ opponentsName }: any) {
     if (gameState === INITIAL_GAME_STATE) {
       return;
     }
-    socket.on('chat', (data) => {
-      const { cellIndex, value } = data;
-      const newGameState = [...gameState];
-
-      // Check if it's the current player's turn
-      if (currentPlayer === value) {
-        newGameState[cellIndex] = value;
-        setGameState(newGameState);
-      }
-    });
 
     checkForWinner();
-  }, [gameState, currentPlayer]);
+  }, [gameState]);
 
   console.log('Playyyerrrr', playerName);
   const resetBoard = () => setGameState(INITIAL_GAME_STATE);
@@ -155,9 +145,6 @@ function Game({ opponentsName }: any) {
   };
 
   const handleCellClick = (event: any) => {
-    if (currentPlayer !== playerName) {
-      return;
-    }
     const cellIndex = Number(event.target.getAttribute('data-cell-index'));
 
     const currentValue = gameState[cellIndex];

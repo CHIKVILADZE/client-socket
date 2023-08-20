@@ -152,12 +152,19 @@ function Game({ opponentsName }: any) {
     if (currentValue) {
       return;
     }
+    if (currentPlayer !== playerName) {
+      return;
+    }
 
     const newValues = [...gameState];
     newValues[cellIndex] = currentPlayer;
     setGameState(newValues);
 
     socket.emit('chat', { cellIndex, value: currentPlayer });
+    console.log('CellIndexxx', { cellIndex, value: currentPlayer });
+    console.log('newValues', newValues);
+    console.log('CurrentPlayer', currentPlayer);
+    console.log('PlayerName', playerName);
   };
 
   return (
